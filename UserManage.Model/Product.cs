@@ -13,8 +13,48 @@ namespace UserManage.Model
         int durationInDays;
         ServerStaus status;
 
-        public int ProductID { get => productId; set => productId = value; }
-        public string Description { get => description; set => description = value; }
-        public int DurationInDays { get => durationInDays; set => durationInDays = value; }
+        public Product(int durationInDays)
+        {
+            this.durationInDays = durationInDays;
+        }
+
+        public int ProductId
+        {
+            get
+            {
+                return productId;
+            }
+
+            set
+            {
+                productId = value;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+
+            set
+            {
+                description = value;
+            }
+        }
+
+        public ServerStaus Status
+        {
+            get
+            {
+                return status;
+            }
+
+            set
+            {
+                status = value;
+            }
+        }
     }
 }

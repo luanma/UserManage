@@ -13,25 +13,84 @@ namespace UserManage.Model
         IPAddress ip;
         int portNumber;
         string password;
-        string Description;
-        string Location;
+        string description;
+        string location;
+
+        public int SeraverId
+        {
+            get
+            {
+                return seraverId;
+            }
+
+            set
+            {
+                seraverId = value;
+            }
+        }
+
+        public IPAddress Ip
+        {
+            get
+            {
+                return ip;
+            }
+
+            set
+            {
+                ip = value;
+            }
+        }
+
+        public int PortNumber
+        {
+            get
+            {
+                return portNumber;
+            }
+
+            set
+            {
+                portNumber = value;
+            }
+        }
+
+        public string Password
+        {
+            get
+            {
+                return password;
+            }
+
+            set
+            {
+                password = value;
+            }
+        }
+
+        public string Description
+        {
+            get
+            {
+                return description;
+            }
+
+            set
+            {
+                description = value;
+            }
+        }
 
         public ServerInfo()
         { }
 
-        public ServerInfo(IPAddress ip, int portNumber, string password, string description, string location)
+        public ServerInfo(int serverid,IPAddress ip, int portNumber, string password, string description, string location)
         {
-            this.ip = ip;
+            this.Ip = ip;
             this.PortNumber = portNumber;
             this.Password = password;
-            Description1 = description;
-            Location = location;
+            this.Description = description;
+            this.location = location;
         }
-
-        public int SeraverId { get => seraverId; set => seraverId = value; }
-        public int PortNumber { get => portNumber; set => portNumber = value; }
-        public string Password { get => password; set => password = value; }
-        public string Description1 { get => Description; set => Description = value; }
-        public string Location1 { get => Location; set => Location = value; }
-    }
+       }
 }

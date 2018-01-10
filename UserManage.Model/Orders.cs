@@ -10,6 +10,45 @@ namespace UserManage.Model
     {
         int orderId;
         int username;
-        DateTime orderDate;       
+        DateTime orderDate;
+
+        public int OrderId
+        {
+            get
+            {
+                return orderId;
+            }
+
+            set
+            {
+                orderId = value;
+            }
+        }
+
+        public int Username
+        {
+            get
+            {
+                return username;
+            }
+
+            set
+            {
+                username = value;
+            }
+        }
+
+        public DateTime OrderDate
+        {
+            get
+            {
+                return orderDate;
+            }
+
+            set
+            {
+                orderDate = value;
+            }
+        }
     }
 }
