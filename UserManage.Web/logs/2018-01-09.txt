@@ -1,0 +1,1 @@
+INFO  2018-01-10 00:09:59,615   626ms MvcApplication         Application_Start  - App Start
