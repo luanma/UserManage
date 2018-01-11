@@ -1,5 +1,6 @@
 ﻿namespace UserManage.Model
 {
+  
     public enum UserStatus
     {
         Normal=1,

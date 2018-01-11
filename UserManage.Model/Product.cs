@@ -8,53 +8,11 @@ namespace UserManage.Model
 {
     public class Product
     {
-        int productId;
-        string description;
-        int durationInDays;
-        ProductStatus status;
+        public int ProductId { get; set; }
+        public string Description { get; set; }
+        public int DurationInDays { get; set; }
+        public ProductStatus Status { get; set; }
 
-        public Product(int durationInDays)
-        {
-            this.durationInDays = durationInDays;
-        }
-
-        public int ProductId
-        {
-            get
-            {
-                return productId;
-            }
-
-            set
-            {
-                productId = value;
-            }
-        }
-
-        public string Description
-        {
-            get
-            {
-                return description;
-            }
-
-            set
-            {
-                description = value;
-            }
-        }
-
-        public ProductStatus Status
-        {
-            get
-            {
-                return status;
-            }
-
-            set
-            {
-                status = value;
-            }
-        }
     }
 }
+

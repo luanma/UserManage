@@ -20,11 +20,13 @@ namespace UserManage.BLL
         
         public  List<Product> GetProducts()
         {
+            
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {
-                return db.Query<Product>
-                    ("SELECT * FROM Product Order BY SortID").ToList();
-            }           
+
+                return  db.Query<Product>("SELECT * FROM Product").ToList();
+            }
+            
         }
     }
 }
