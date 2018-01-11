@@ -18,7 +18,7 @@ namespace UserManage.BLL
             ConnectionString = connstring;
         }
         
-        public static List<Product> GetProducts()
+        public  List<Product> GetProducts()
         {
             using (IDbConnection db = new SqlConnection(ConnectionString))
             {

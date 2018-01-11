@@ -11,7 +11,7 @@ namespace UserManage.Model
         int productId;
         string description;
         int durationInDays;
-        ServerStaus status;
+        ProductStatus status;
 
         public Product(int durationInDays)
         {
