@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UserManage.IDAL
+namespace UserManage.Model
 {
-    public interface UserManager
+    public enum ProductStatus
     {
+        Enable=1,
+        Disabeld=2,
+        Expired=3
     }
 }

@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Orders.cs" />
     <Compile Include="Product.cs" />
+    <Compile Include="ProductStatus.cs" />
     <Compile Include="ServerInfo.cs" />
     <Compile Include="ServerStaus.cs" />
     <Compile Include="ServerType.cs" />

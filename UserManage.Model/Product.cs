@@ -44,7 +44,7 @@ namespace UserManage.Model
             }
         }
 
-        public ServerStaus Status
+        public ProductStatus Status
         {
             get
             {

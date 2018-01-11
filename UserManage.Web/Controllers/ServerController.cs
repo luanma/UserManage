@@ -23,5 +23,35 @@ namespace UserManage.Web.Controllers
 
             return servers.ToArray();
         }
+
+        public ServerInfo[] GetAllServers()
+        {
+
+            List<ServerInfo> servers = new List<ServerInfo>();
+            IPAddress ip = IPAddress.Parse("67.209.177.98");
+
+            var s = new ServerInfo(1, ip, 443, "Reuters123", "Bandwagonhost", "US");
+            servers.Add(s);
+            ip = IPAddress.Parse("45.77.176.125");
+            var s2 = new ServerInfo(2, ip, 443, "Reuters123", "vultr.toyo", "Tokyo");
+            servers.Add(s2);
+
+            return servers.ToArray();
+        }
+
+        public ServerInfo[] GetMyServers()
+        {
+
+            List<ServerInfo> servers = new List<ServerInfo>();
+            IPAddress ip = IPAddress.Parse("67.209.177.98");
+
+            var s = new ServerInfo(1, ip, 443, "Reuters123", "Bandwagonhost", "US");
+            servers.Add(s);
+            ip = IPAddress.Parse("45.77.176.125");
+            var s2 = new ServerInfo(2, ip, 443, "Reuters123", "vultr.toyo", "Tokyo");
+            servers.Add(s2);
+
+            return servers.ToArray();
+        }
     }
 }
