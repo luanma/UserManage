@@ -6,7 +6,7 @@ using System.IO;
 using System.Reflection;
 using System.Drawing;
 
-namespace Util
+namespace UserManage.Util
 {
     public class GDIPicGenerater
     {

@@ -1,0 +1,5 @@
+INFO  2018-01-12 11:27:06,165   699ms MvcApplication         Application_Start  - App Start
+INFO  2018-01-12 11:31:30,785   548ms MvcApplication         Application_Start  - App Start
+INFO  2018-01-12 11:40:14,607   633ms MvcApplication         Application_Start  - App Start
+INFO  2018-01-12 14:23:03,752   722ms MvcApplication         Application_Start  - App Start
+INFO  2018-01-12 14:32:01,077   733ms MvcApplication         Application_Start  - App Start

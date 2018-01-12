@@ -1,25 +1,49 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UserManage.Model;
+using Dapper;
+using System.Data.SqlClient;
 
 namespace UserManage.BLL
 {
     public class UserManager
     {
-        public User Login(string username, string password)
+        private string connstr;
+        public UserManager(string connstr)
+        {
+            this.connstr = connstr;
+        }
+
+        public UserInfo Login(string username, string password)
         {
             return null;
         }
 
-        public void CreateUser(string userName, string password)
-        {
+
+
+        public CreateUserResult CreateUser(string userName, string password, int refUserId)
+        {           
+            //UserExist? or not
+            bool userExist = false;
+            using (IDbConnection db = new SqlConnection(connstr))
+            {
+                userExist = db.ExecuteScalar<bool>("SELECT count(1) FROM UserInfo Where UserName=@userName", new { userName });
+            }
+            if (userExist) return CreateUserResult.UserExits;
             
+            using (IDbConnection db = new SqlConnection(connstr))
+            {
+                db.Execute("INSERT INTO [UserInfo]([UserName] , [Password] , [RefUserId] , [Status]) VALUES (@userName, @password, @refUserId, @Status)",
+                    new { userName, password, refUserId, Status=1 });
+            }
+            return CreateUserResult.Success;
         }
 
-        public User GetUserInfo(int userid)
+        public UserInfo GetUserInfo(int userid)
         {
             return null;
         }

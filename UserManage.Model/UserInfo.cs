@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UserManage.Model
 {
-    public class User
+    public class UserInfo
     {
         int userId;
         DateTime createDate;

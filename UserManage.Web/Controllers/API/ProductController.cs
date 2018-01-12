@@ -16,11 +16,7 @@ namespace UserManage.Web.Controllers.API
         {
             string connstr = ConfigurationManager.ConnectionStrings["connstr"].ConnectionString;
             ProductManager pm = new ProductManager(connstr);
-
             return pm.GetProducts();
-
-
-
         }
     }
 }

@@ -5,13 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using System.Drawing;
 using System.Drawing.Imaging;
+using static System.Net.Mime.MediaTypeNames;
 
-namespace Util
+namespace UserManage.Util
 {
     public class ImageResult : ActionResult
     {
         public ImageResult() { }
-        public Image Image { get; set; }
+        public System.Drawing.Image Image { get; set; }
         public ImageFormat ImageFormat { get; set; }
         public override void ExecuteResult(ControllerContext context)
         {

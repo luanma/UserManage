@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using UserManage.BLL;
 
 namespace UserManage.Web.Controllers
 {
     public class UserController : Controller
     {
+        private string connstr = ConfigurationManager.ConnectionStrings["connstr"].ConnectionString;
         // GET: User
         public ActionResult Index()
         {
+            UserManager um = new UserManager(connstr);
+            um.CreateUser("zhanglei", "123456",0);
             return View();
         }
 
