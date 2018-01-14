@@ -12,6 +12,7 @@ namespace UserManage.Model
         public string Description { get; set; }
         public int DurationInDays { get; set; }
         public ProductStatus Status { get; set; }
+        public double Price { get; set; }
 
     }
 }

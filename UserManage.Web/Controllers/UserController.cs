@@ -14,8 +14,7 @@ namespace UserManage.Web.Controllers
         // GET: User
         public ActionResult Index()
         {
-            UserManager um = new UserManager(connstr);
-            um.CreateUser("zhanglei", "123456",0);
+           
             return View();
         }
 
@@ -28,6 +27,7 @@ namespace UserManage.Web.Controllers
         // GET: User/Create
         public ActionResult Create()
         {
+
             return View();
         }
 

@@ -1,6 +1,7 @@
 ﻿using log4net;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Http;
@@ -23,6 +24,7 @@ namespace UserManage.Web
             //Log4net
             log4net.Config.XmlConfigurator.Configure();
             log.Info("App Start");
+            Application["connStr"] = ConfigurationManager.ConnectionStrings["connstr"].ConnectionString;
         }
     }
 }

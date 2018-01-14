@@ -50,8 +50,8 @@
     <Compile Include="ServerInfo.cs" />
     <Compile Include="ServerStaus.cs" />
     <Compile Include="ServerType.cs" />
-    <Compile Include="UserInfo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserInfo.cs" />
     <Compile Include="UserStatus.cs" />
   </ItemGroup>
   <ItemGroup>
