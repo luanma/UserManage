@@ -28,7 +28,9 @@ namespace UserManage.Web
         }
         protected void Session_Start()
         {
-            Session["VALIDATESTR"] = System.Guid.NewGuid().ToString().Substring(1, 4);
+            log.Info("Session start");
+            log.Info("Client IP: "+ Request.UserHostAddress +" , HostName: + " + Request.UserHostName  );            
+            log.Info("UserAgent: " + Request.UserAgent);
         }
     }
 }

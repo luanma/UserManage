@@ -13,7 +13,8 @@ namespace UserManage.Web.Controllers
         // GET: Image
         public ActionResult GetImage()
         {
-            string validateStr = Session["VALIDATESTR"].ToString();
+            string validateStr = Guid.NewGuid().ToString().Substring(1, 4);
+            Session["VALIDATESTR"] = validateStr;
             Bitmap img = Util.GDIPicGenerater.GetPicGenerate().GetImage(validateStr);
             return new ImageResult()
             {
