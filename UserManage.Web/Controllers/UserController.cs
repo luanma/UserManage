@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using UserManage.BLL;
+using UserManage.Model;
 
 namespace UserManage.Web.Controllers
 {
@@ -37,8 +38,12 @@ namespace UserManage.Web.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-
+                UserInfo user = new UserInfo();
+                user.UserName = collection["UserName"].ToString();
+                user.Password = collection["Password"].ToString();
+                user.Status = UserStatus.Normal;
+                user.CreateDate = System.DateTime.Now;
+                //user.RefUserId
                 return RedirectToAction("Index");
             }
             catch
@@ -60,28 +65,6 @@ namespace UserManage.Web.Controllers
             try
             {
                 // TODO: Add update logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
-
-        // GET: User/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: User/Delete/5
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
 
                 return RedirectToAction("Index");
             }
