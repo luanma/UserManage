@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManage.Web", "UserManage.Web\UserManage.Web.csproj", "{E184CB2D-6AAE-4617-9204-FC8A9BBD668E}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManage.BLL", "UserManage.BLL\UserManage.BLL.csproj", "{C4E0A213-8705-4B17-A851-C6C7BEC83628}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManage.Util", "UserManage.Util\UserManage.Util.csproj", "{D7044ACE-B310-4359-8F39-6FC6D4002B22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManage.UtilTests", "UserManage.UtilTests\UserManage.UtilTests.csproj", "{A8A9C1B4-ABD9-43B4-A95A-19CAB8BD2B96}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{D7044ACE-B310-4359-8F39-6FC6D4002B22}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D7044ACE-B310-4359-8F39-6FC6D4002B22}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D7044ACE-B310-4359-8F39-6FC6D4002B22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8A9C1B4-ABD9-43B4-A95A-19CAB8BD2B96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8A9C1B4-ABD9-43B4-A95A-19CAB8BD2B96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8A9C1B4-ABD9-43B4-A95A-19CAB8BD2B96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8A9C1B4-ABD9-43B4-A95A-19CAB8BD2B96}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
