@@ -28,11 +28,8 @@ namespace UserManage.BLL
         public CreateUserResult CreateUser(string userName, string password, int refUserId)
         {           
             //UserExist? or not
-            bool userExist = false;
-            using (IDbConnection db = new SqlConnection(connstr))
-            {
-                userExist = db.ExecuteScalar<bool>("SELECT count(1) FROM UserInfo Where UserName=@userName", new { userName });
-            }
+            bool userExist = UserExists(userName);
+            
             if (userExist) return CreateUserResult.UserExits;
             
             using (IDbConnection db = new SqlConnection(connstr))
@@ -52,6 +49,15 @@ namespace UserManage.BLL
         {
             return null;
         }
-        
+
+        public bool UserExists(string userName)
+        {
+            bool userExist = false;
+            using (IDbConnection db = new SqlConnection(connstr))
+            {
+                userExist = db.ExecuteScalar<bool>("SELECT count(1) FROM UserInfo Where UserName=@userName", new { userName });
+            }
+            return userExist;
+        }
     }
 }
