@@ -26,5 +26,9 @@ namespace UserManage.Web
             log.Info("App Start");
             Application["connStr"] = ConfigurationManager.ConnectionStrings["connstr"].ConnectionString;
         }
+        protected void Session_Start()
+        {
+            Session["VALIDATESTR"] = System.Guid.NewGuid().ToString().Substring(1, 4);
+        }
     }
 }

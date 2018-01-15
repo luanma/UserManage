@@ -19,7 +19,7 @@ namespace UserManage.Util
             {
                 //Assembly.GetExecutingAssembly();
                 Assembly assembly = Assembly.GetExecutingAssembly();// Assembly.LoadFrom("Util.Dll");
-                backGroundStream = assembly.GetManifestResourceStream("Util.Img.backGround.png");
+                backGroundStream = assembly.GetManifestResourceStream("UserManage.Util.Img.backGround.png");
             }
             return instance;
         }
