@@ -6,6 +6,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using UserManage.BLL;
+using UserManage.Model;
 
 namespace UserManage.Web.Controllers.API
 {
@@ -17,7 +18,13 @@ namespace UserManage.Web.Controllers.API
             UserManager um = new UserManager(connstr);
             return um.UserExists(userName);
         }
-                
-        
+
+        public UserInfo login(string username, string password)
+        {
+            string connstr = ConfigurationManager.ConnectionStrings["connstr"].ConnectionString;
+            UserManager um = new UserManager(connstr);
+            var result= um.Login(username, password);
+            return result;
+        }
     }
 }

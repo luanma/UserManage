@@ -12,12 +12,22 @@ namespace UserManage.Web.Controllers
     public class UserController : Controller
     {
         private string connstr = ConfigurationManager.ConnectionStrings["connstr"].ConnectionString;
-        // GET: User
-        public ActionResult Index()
-        {
-           
+       
+        
+        public ActionResult Login()
+        {           
             return View();
         }
+        [HttpPost]
+        public ActionResult Login(FormCollection collection)
+        {
+            string username = collection["username"];
+            string password = collection["password"];
+            UserManager um = new UserManager(connstr);
+            var result= um.Login(username, password);
+            return View();
+        }
+
 
         // GET: User/Details/5
         public ActionResult Details(int id)
@@ -44,8 +54,10 @@ namespace UserManage.Web.Controllers
                 user.Status = UserStatus.Normal;
                 user.CreateDate = System.DateTime.Now;
                 UserManager um = new UserManager(connstr);
-                um.CreateUser(user.UserName, user.Password,);
-                return RedirectToAction("Index");
+                var result= um.CreateUser(user.UserName, user.Password,user.RefUserId);
+               // if(result==CreateUserResult.Success)
+                 return RedirectToAction("Index");
+               
             }
             catch
             {
