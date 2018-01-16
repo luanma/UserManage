@@ -18,9 +18,14 @@ namespace UserManage.BLL
             this.connstr = connstr;
         }
 
-        public UserInfo Login(string username, string password)
+        public UserInfo Login(string userName, string password)
         {
-            return null;
+            UserInfo user;  
+            using (IDbConnection db = new SqlConnection(connstr))
+            {
+                user = db.Query<UserInfo>("SELECT * FROM UserInfo Where UserName=@userName and Password=@password", new { userName,password }).SingleOrDefault();
+            }
+            return user;
         }
 
 
