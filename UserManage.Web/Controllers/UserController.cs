@@ -43,7 +43,8 @@ namespace UserManage.Web.Controllers
                 user.Password = collection["Password"].ToString();
                 user.Status = UserStatus.Normal;
                 user.CreateDate = System.DateTime.Now;
-                //user.RefUserId
+                UserManager um = new UserManager(connstr);
+                um.CreateUser(user.UserName, user.Password,);
                 return RedirectToAction("Index");
             }
             catch
