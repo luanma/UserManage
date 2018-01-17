@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManage.Util", "UserMana
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserManage.UtilTests", "UserManage.UtilTests\UserManage.UtilTests.csproj", "{A8A9C1B4-ABD9-43B4-A95A-19CAB8BD2B96}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chitu", "Chitu\Chitu.csproj", "{A581ADDE-C788-4EDD-97C7-591D0CEE56DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{A8A9C1B4-ABD9-43B4-A95A-19CAB8BD2B96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8A9C1B4-ABD9-43B4-A95A-19CAB8BD2B96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8A9C1B4-ABD9-43B4-A95A-19CAB8BD2B96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A581ADDE-C788-4EDD-97C7-591D0CEE56DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A581ADDE-C788-4EDD-97C7-591D0CEE56DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A581ADDE-C788-4EDD-97C7-591D0CEE56DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A581ADDE-C788-4EDD-97C7-591D0CEE56DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
