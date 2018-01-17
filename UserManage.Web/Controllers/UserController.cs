@@ -38,7 +38,6 @@ namespace UserManage.Web.Controllers
         // GET: User/Create
         public ActionResult Create()
         {
-
             return View();
         }
 
