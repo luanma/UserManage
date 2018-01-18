@@ -25,6 +25,7 @@ namespace UserManage.Web.Controllers
             string password = collection["password"];
             UserManager um = new UserManager(connstr);
             var result= um.Login(username, password);
+            Session["user"] = result;
             return View();
         }
 
@@ -64,6 +65,11 @@ namespace UserManage.Web.Controllers
             }
         }
 
+        public ActionResult ChangePassword(string userName)
+        {
+            return View();
+        }
+        
         // GET: User/Edit/5
         public ActionResult Edit(int id)
         {
