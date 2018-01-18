@@ -12,7 +12,7 @@ namespace UserManage.Web.Controllers
         ILog log = log4net.LogManager.GetLogger(typeof(HomeController));
         public ActionResult Index()
         {          
-            ViewBag.Title = "Home Page";            
+            ViewBag.Title = "用户注册";            
             return View();
         }
 

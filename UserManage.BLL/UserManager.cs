@@ -45,7 +45,25 @@ namespace UserManage.BLL
             return CreateUserResult.Success;
         }
 
+        public bool UpdatePassword(string userName, string password)
+        {
+            if (!UserExists(userName))
+                return false;
+       
+
+            using (IDbConnection db = new SqlConnection(connstr))
+            {
+                db.Execute("Update UserInfo set password=@password Where UserName=@userName", new { password,userName });
+            }
+            return true;
+        }
+
         public UserInfo GetUserInfo(int userid)
+        {
+            return null;
+        }
+
+        public UserInfo GetUserInfo(string userName)
         {
             return null;
         }
