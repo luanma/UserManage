@@ -91,5 +91,15 @@ namespace UserManage.Web.Controllers
                 return View();
             }
         }
+
+
+        public bool Validate(string code)
+        {
+            if (Session["VALIDATESTR"]!=null && 
+                Session["VALIDATESTR"].ToString() == code)
+                return true;
+            else
+                return false;
+        }
     }
 }

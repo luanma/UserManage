@@ -1,7 +1,7 @@
 ﻿@model UserManage.Web.Models.UserViewModels
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "注册新用户";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -60,6 +60,12 @@
             }
         })
         $("#UserName").focus();
+        $("#validationCode").blur(function () {
+            var input = $("#validationCode").val();
+            $.getJSON("../user/Validate/?code=" + input, function (data) {
+                print(data);
+            });
+        });
     });
 </script>
 <div>
