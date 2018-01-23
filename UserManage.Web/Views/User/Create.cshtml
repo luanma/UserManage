@@ -37,7 +37,14 @@
                 @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
             </div>
         </div>
+        <div class="form-group">
+            <label>验证码</label>
+            <div class="col-md-10">
+                <input type="text" id="phoneCode" /> 
+                <input type="button" id="btnGetPhoneCode" value="获得验证码" />
 
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />
@@ -60,10 +67,28 @@
             }
         })
         $("#UserName").focus();
+
+        $("#btnGetPhoneCode").click(function () {
+            var phoneNumber = $("#UserName").val();
+            $.get("../user/SendPhoneCode/?phone=" + phoneNumber, function (data, status) {
+                if (data) {
+
+                }
+                else {
+                }
+            });
+        });
+
         $("#validationCode").blur(function () {
             var input = $("#validationCode").val();
-            $.getJSON("../user/Validate/?code=" + input, function (data) {
-                print(data);
+            $.get("../user/Validate/?code=" + input, function (data, status) {
+                if (data)
+                {
+
+                }
+                else
+                {
+                }
             });
         });
     });

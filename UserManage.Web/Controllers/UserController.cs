@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using UserManage.BLL;
 using UserManage.Model;
+using UserManage.Util;
 
 namespace UserManage.Web.Controllers
 {
@@ -97,6 +98,22 @@ namespace UserManage.Web.Controllers
         {
             if (Session["VALIDATESTR"]!=null && 
                 Session["VALIDATESTR"].ToString() == code)
+                return true;
+            else
+                return false;
+        }
+
+        public bool SendPhoneCode(string phone)
+        {
+            var code = System.Guid.NewGuid().ToString().Substring(1, 6);
+            Session["VALIDATESTR"] = code;
+            var key = ConfigurationManager.AppSettings["smskey"].ToString();
+            return SMSHelper.SendMessage(phone, code, key);
+        }
+
+        public bool IsPhoneCodeCorrect(string phoneCode)
+        {
+            if (Session["VALIDATESTR"].ToString().ToUpper() == phoneCode.ToUpper())
                 return true;
             else
                 return false;
