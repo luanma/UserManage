@@ -23,53 +23,41 @@
                 @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="form-group">
-            验证码
-            <div class="col-md-10">
-                <img src="../Image/GetImage"  /> 
-                <input id="validationCode" type="text" maxlength="4" class="form-control" width="50%"/>
-            </div>
-        </div>
+     
         <div class="form-group">
             @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" , @placeholder="密码最少6位" , @id="password"} })
-                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                <input type="password" class="form-control  text-box single-line" placeholder="密码最少6位"  maxlength="50"/>
             </div>
         </div>
         <div class="form-group">
             <label>验证码</label>
             <div class="col-md-10">
-                <input type="text" id="phoneCode" /> 
-                <input type="button" id="btnGetPhoneCode" value="获得验证码" />
+                <input type="text" id="phoneCode" maxlength="6" class="form-control  text-box single-line"  /> 
+                <input type="button" id="btnGetPhoneCode" value="获得验证码" class="btn btn-default" />
 
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="button" value="注册" class="btn btn-default" id="btnSubmit" />
             </div>
         </div>
     </div>
 }
 <script language="javascript" type="text/javascript">
-    $(document).ready(function () {
-        $("Form").validate({
-            rules: {
-                UserName: "required",
-                validationCode: "required",
-                password: "required"
-            },
-            messages: {
-                loginName: "请输入电话",
-                passWord1: "验证码",
-                password: "请输入密码"
-            }
-        })
+    function showErrorMesage (errorMessage)
+    {
+        alert(errorMessage);
+    }
         $("#UserName").focus();
 
         $("#btnGetPhoneCode").click(function () {
+            //validate phone number
             var phoneNumber = $("#UserName").val();
+            if(phoneNumber =="")
+                showErrorMesage("电话号码不能为空")
+                
             $.get("../user/SendPhoneCode/?phone=" + phoneNumber, function (data, status) {
                 if (data) {
 
@@ -91,7 +79,7 @@
                 }
             });
         });
-    });
+  
 </script>
 <div>
     @Html.ActionLink("Back to List", "Index")
