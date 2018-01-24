@@ -33,7 +33,7 @@ namespace UserManage.BLL
         public CreateUserResult CreateUser(string userName, string password, int refUserId)
         {           
             //Check inputs
-
+            
             //UserExist? or not
             bool userExist = UserExists(userName);
             

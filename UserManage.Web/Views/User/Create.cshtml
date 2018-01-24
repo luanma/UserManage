@@ -8,7 +8,7 @@
 <h2>手机注册</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm(null, null, FormMethod.Post, new { id= "form1"}))
 {
     @Html.AntiForgeryToken()
     
@@ -16,6 +16,7 @@
         <h4>注册用户</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <label id="validationSummary" class = "text-danger"></label>
         <div class="form-group">
             @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2 " })
             <div class="col-md-10">
@@ -27,7 +28,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <input type="password" class="form-control  text-box single-line" placeholder="密码最少6位"  maxlength="50"/>
+                <input type="password" id="Password" class="form-control  text-box single-line" placeholder="密码最少6位"  maxlength="50"/>
             </div>
         </div>
         <div class="form-group">
@@ -48,15 +49,46 @@
 <script language="javascript" type="text/javascript">
     function showErrorMesage (errorMessage)
     {
-        alert(errorMessage);
+        $("#validationSummary").text(errorMessage);     
+    }
+
+    function checkphoneNumber()
+    {
+        var phoneNumber = $("#UserName").val();
+        if (phoneNumber == "") {
+            showErrorMesage("电话号码不能为空");
+            $("#UserName").focus();
+            return false;
+        }
+
+        if (phoneNumber.length < 6) {
+            showErrorMesage("请输入正确的电话号码");
+            $("#UserName").focus();
+            return false;
+        }
+    }
+
+    function checkPassword()
+    {
+        var password = $("#Password").val();
+        if (password == "" || password.length < 6) {
+            showErrorMesage("密码长度最少六位");
+            $("#Password").focus();
+            return false;
+        }
+        return true;
     }
         $("#UserName").focus();
 
         $("#btnGetPhoneCode").click(function () {
+            showErrorMesage("");
             //validate phone number
-            var phoneNumber = $("#UserName").val();
-            if(phoneNumber =="")
-                showErrorMesage("电话号码不能为空")
+           
+            if (!checkphoneNumber())
+                return false;
+
+            if (!checkPassword())
+                return false;
                 
             $.get("../user/SendPhoneCode/?phone=" + phoneNumber, function (data, status) {
                 if (data) {
@@ -65,20 +97,25 @@
                 else {
                 }
             });
+
+
         });
 
-        $("#validationCode").blur(function () {
-            var input = $("#validationCode").val();
-            $.get("../user/Validate/?code=" + input, function (data, status) {
-                if (data)
-                {
+        $("#btnSubmit").click(function () {
+            //clear Error message
+            showErrorMesage("");
 
-                }
-                else
-                {
-                }
-            });
+            if (!checkphoneNumber())
+                return false;
+
+            if (!checkPassword())
+                return false;
+
+            $("#form1").submit();
+            
         });
+
+
   
 </script>
 <div>
