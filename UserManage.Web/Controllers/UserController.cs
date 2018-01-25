@@ -49,6 +49,7 @@ namespace UserManage.Web.Controllers
         {
             try
             {
+                //verify code
                 UserInfo user = new UserInfo();
                 user.UserName = collection["UserName"].ToString();
                 user.Password = collection["Password"].ToString();
@@ -118,12 +119,6 @@ namespace UserManage.Web.Controllers
 
             return Session["VALIDATESTR"].ToString().ToUpper() == code.ToUpper();            
         }
-        public bool IsPhoneCodeCorrect(string phoneCode)
-        {
-            if (Session["VALIDATESTR"].ToString().ToUpper() == phoneCode.ToUpper())
-                return true;
-            else
-                return false;
-        }
+
     }
 }
