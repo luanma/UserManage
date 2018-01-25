@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using UserManage.BLL;
 using UserManage.Model;
 using UserManage.Util;
+using UserManage.Web.Models;
 
 namespace UserManage.Web.Controllers
 {
@@ -49,6 +50,7 @@ namespace UserManage.Web.Controllers
         {
             try
             {
+
                 //verify code
                 UserInfo user = new UserInfo();
                 user.UserName = collection["UserName"].ToString();
@@ -57,9 +59,14 @@ namespace UserManage.Web.Controllers
                 user.CreateDate = System.DateTime.Now;
                 UserManager um = new UserManager(connstr);
                 var result= um.CreateUser(user.UserName, user.Password,user.RefUserId);
-               // if(result==CreateUserResult.Success)
-                 return RedirectToAction("Index");
-               
+                if (result == CreateUserResult.Success)
+                    return RedirectToAction("Index");
+                else
+                {
+                    UserViewModels u = new UserViewModels();
+                    u.UserName = user.UserName;
+                    return View();
+                }
             }
             catch
             {
