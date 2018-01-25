@@ -66,6 +66,7 @@
             $("#UserName").focus();
             return false;
         }
+        return true;
     }
 
     function checkPassword()
@@ -87,9 +88,8 @@
             if (!checkphoneNumber())
                 return false;
 
-            if (!checkPassword())
-                return false;
-                
+            var phoneNumber = $("#UserName").val();
+
             $.get("../user/SendPhoneCode/?phone=" + phoneNumber, function (data, status) {
                 if (data) {
 
@@ -111,7 +111,23 @@
             if (!checkPassword())
                 return false;
 
-            $("#form1").submit();
+
+            var code = $("#phoneCode").val();
+            if (code == "")
+            {
+                showErrorMesage("请输入验证码");
+                $("#phoneCode").focus();
+            }
+            $.get("../user/verifyPhoneCode/?code=" + code, function (data, status) {
+                if (data) {
+                    $("#form1").submit();
+                }
+                else {
+                    showErrorMesage("请输入正确的验证码");
+                    $("#phoneCode").focus();
+                }
+            });
+            
             
         });
 

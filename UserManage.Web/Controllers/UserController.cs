@@ -111,6 +111,13 @@ namespace UserManage.Web.Controllers
             return SMSHelper.SendMessage(phone, code, key);
         }
 
+        public bool VerifyPhoneCode(string code)
+        {
+            if (Session["VALIDATESTR"] == null)
+                return false;
+
+            return Session["VALIDATESTR"].ToString().ToUpper() == code.ToUpper();            
+        }
         public bool IsPhoneCodeCorrect(string phoneCode)
         {
             if (Session["VALIDATESTR"].ToString().ToUpper() == phoneCode.ToUpper())
