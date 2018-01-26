@@ -32,8 +32,8 @@
             </div>
         </div>
         <div class="form-group">
-            <label>验证码</label>
-            <div class="col-md-10">
+            <label class="control-label col-md-2 " for="phoneCode">验证码</label>
+            <div class="col-md-6">
                 <input type="text" id="phoneCode" maxlength="6" class="form-control  text-box single-line"  /> 
                 <input type="button" id="btnGetPhoneCode" value="获得验证码" class="btn btn-default" />
 
@@ -47,9 +47,25 @@
     </div>
 }
 <script language="javascript" type="text/javascript">
-    function showErrorMesage (errorMessage)
+    var count = 60;
+    var int 
+    function showErrorMesage(errorMessage)
     {
         $("#validationSummary").text(errorMessage);     
+    }
+
+    function Interval()
+    {
+        if (count == 0)
+        {
+            window.clearInterval(int);
+            count = 60;
+            $("#btnGetPhoneCode").prop('disabled', false);
+            $("#btnGetPhoneCode").prop('value', "获得验证码");
+           
+        }
+        count--;
+        $("#btnGetPhoneCode").prop('value', count + " 秒后重新 获得验证码");
     }
 
     function checkphoneNumber()
@@ -92,12 +108,13 @@
 
             $.get("../user/SendPhoneCode/?phone=" + phoneNumber, function (data, status) {
                 if (data.toLowerCase() == 'true') {
-
+                    $("#btnGetPhoneCode").prop('disabled', true);
+                   int=  self.setInterval(Interval, 1000);
                 }
                 else {
+                    showErrorMesage("发送短消息失败");
                 }
             });
-
 
         });
 
@@ -118,6 +135,7 @@
                 showErrorMesage("请输入验证码");
                 $("#phoneCode").focus();
             }
+
             $.get("../user/verifyPhoneCode/?code=" + code, function (data, status) {
                 if (data.toLowerCase()=='true') {
                     $("#form1").submit();
