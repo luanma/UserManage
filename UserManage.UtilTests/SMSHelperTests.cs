@@ -15,7 +15,7 @@ namespace UserManage.Util.Tests
         public void SendMessageTest()
         {
             SMSHelper s = new SMSHelper();
-            s.SendMessage("13691043111", "9527","");
+            //s.SendMessage("13691043111", "9527","");
         }
     }
 }

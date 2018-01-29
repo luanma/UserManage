@@ -20,5 +20,8 @@ namespace UserManage.Web.Models
         
         [Display(Name = "验证码")]
         public string SMSStr { get; set; }
+
+        [Display(Name = "推荐人")]
+        public string RefUserId { get; set; }
     }
 }

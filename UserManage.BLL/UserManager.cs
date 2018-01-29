@@ -41,8 +41,8 @@ namespace UserManage.BLL
             
             using (IDbConnection db = new SqlConnection(connstr))
             {
-                db.Execute("INSERT INTO [UserInfo]([UserName] , [Password] , [RefUserId] , [Status]) VALUES (@userName, @password, @refUserId, @Status)",
-                    new { userName, password, refUserId, Status=1 });
+                db.Execute("INSERT INTO [UserInfo]([UserName] , [Password] , [RefUserId] , [Status],CreateDate) VALUES (@userName, @password, @refUserId, @Status,@createDate)",
+                    new { userName, password, refUserId, Status=1, createDate=DateTime.Now });
             }
             return CreateUserResult.Success;
         }
@@ -77,12 +77,16 @@ namespace UserManage.BLL
 
         public bool UserExists(string userName)
         {
-            bool userExist = false;
+            int count;
+
             using (IDbConnection db = new SqlConnection(connstr))
             {
-                userExist = db.ExecuteScalar<bool>("SELECT count(1) FROM UserInfo Where UserName=@userName", new { userName });
+                count = db.ExecuteScalar<int>("SELECT count(1) FROM UserInfo Where UserName=@userName", new { userName });
             }
-            return userExist;
+            if (count > 0)
+                return true;
+            else
+                return false;
         }
     }
 }

@@ -57,6 +57,13 @@ namespace UserManage.Web.Controllers
                 user.Password = collection["Password"].ToString();
                 user.Status = UserStatus.Normal;
                 user.CreateDate = System.DateTime.Now;
+                if (collection["RefUserId"] != null)
+                {
+                    int refid = 1;
+                    int.TryParse(collection["RefUserId"].ToString(), out refid);
+                    user.RefUserId = refid;
+                }
+
                 UserManager um = new UserManager(connstr);
                 var result= um.CreateUser(user.UserName, user.Password,user.RefUserId);
                 if (result == CreateUserResult.Success)
@@ -124,7 +131,17 @@ namespace UserManage.Web.Controllers
             if (Session["VALIDATESTR"] == null)
                 return false;
 
-            return Session["VALIDATESTR"].ToString().ToUpper() == code.ToUpper();            
+            return Session["VALIDATESTR"].ToString().ToUpper() == code.ToUpper();
+        }
+
+        public bool UserExists(string userName)
+        {
+          
+            if (string.IsNullOrEmpty(userName))
+                return false;
+
+            UserManager um = new UserManager(connstr);
+            return um.UserExists(userName);
         }
 
     }

@@ -6,22 +6,6 @@
         xmlns:local="clr-namespace:Chitu"
         mc:Ignorable="d"
         Title="赤兔网游加速器" Height="350" Width="525">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" MinWidth="200" />
-            <ColumnDefinition Width="Auto" MinWidth="169" />
-            <ColumnDefinition Width="32*"/>
-            <ColumnDefinition Width="5*"/>
-        </Grid.ColumnDefinitions>
-        <Button Content="aaaaaaaaaaa" Grid.Column="2" HorizontalAlignment="Left" Margin="25,83,0,0" Grid.Row="3" VerticalAlignment="Top" Height="22" Width="73" />
-        <Button Content="bbbbbbbbbbb" Grid.Row="1" Margin="0,6,116,17" Grid.RowSpan="2"/>
-        <Button Content="ccccccccccc" Grid.Row="2" Margin="84,0,38,0"/>
-        <Button Content="ddddddddddd" Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Margin="1,0,124,0"/>
-    </Grid>
+    <StackPanel HorizontalAlignment="Left" Height="200" Margin="149,212,0,0" VerticalAlignment="Top" Width="auto"  />
+
 </Window>

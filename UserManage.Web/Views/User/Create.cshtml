@@ -31,6 +31,7 @@
                 <input type="password" id="Password" class="form-control  text-box single-line" placeholder="密码最少6位"  maxlength="50"/>
             </div>
         </div>
+
         <div class="form-group">
             <label class="control-label col-md-2 " for="phoneCode">验证码</label>
             <div class="col-md-6">
@@ -39,6 +40,14 @@
 
             </div>
         </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2 " for="RefUserId">推荐码</label>
+            <div class="col-md-10">
+                <input type="text" id="RefUserId" class="form-control  text-box single-line" placeholder="推荐码是可选的" maxlength="9" />
+            </div>
+        </div>
+       
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="button" value="注册" class="btn btn-default" id="btnSubmit" />
@@ -48,10 +57,15 @@
 }
 <script language="javascript" type="text/javascript">
     var count = 60;
-    var int 
+    var int;
+
+    var phoneNumberValid = true;
+    var passwordValid = true;
+   
+
     function showErrorMesage(errorMessage)
     {
-        $("#validationSummary").text(errorMessage);     
+        $("#validationSummary").text(errorMessage);
     }
 
     function Interval()
@@ -62,10 +76,10 @@
             count = 60;
             $("#btnGetPhoneCode").prop('disabled', false);
             $("#btnGetPhoneCode").prop('value', "获得验证码");
-           
-        }
+            return;
+        } 
         count--;
-        $("#btnGetPhoneCode").prop('value', count + " 秒后重新 获得验证码");
+        $("#btnGetPhoneCode").prop('value', count + " 秒后重新获得验证码");
     }
 
     function checkphoneNumber()
@@ -95,9 +109,22 @@
         }
         return true;
     }
-        $("#UserName").focus();
 
-        $("#btnGetPhoneCode").click(function () {
+    $("#UserName").focus(function () {
+        $("#UserName").prop('disabled', false);
+    })
+    $("#UserName").focus();
+    
+
+    $("#UserName").blur(function () {
+        var phoneNumber = $("#UserName").val();
+        $.get("../user/UserExists/?userName=" + phoneNumber, function (data, status) {
+            if (data.toLowerCase() == "true")
+                showErrorMesage("电话已经注册，请点击找回密码");
+        });
+    });
+
+    $("#btnGetPhoneCode").click(function () {
             showErrorMesage("");
             //validate phone number
            
@@ -118,7 +145,7 @@
 
         });
 
-        $("#btnSubmit").click(function () {
+    $("#btnSubmit").click(function () {
             //clear Error message
             showErrorMesage("");
 
