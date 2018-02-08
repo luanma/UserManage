@@ -18,14 +18,17 @@ namespace UserManage.Util.Tests
         {
             Stopwatch sw = new Stopwatch();
             sw.Start();
-            for(int i=0;i<100;i++)
-            {
+            //for(int i=0;i<100;i++)
+            //{
                 string s = "weixin：//wxpay/s/" + System.Guid.NewGuid().ToString().Substring(4);
                 Bitmap b = QRGenerator.GenerateQRCode(s);
-            }
+            b.Save(@"C:\code\a.bmp");
+            //}
             sw.Stop();
             System.Diagnostics.Debug.Print(sw.ElapsedMilliseconds.ToString());
             Assert.IsTrue(sw.ElapsedMilliseconds < 3000);
+
         }
+
     }
 }
